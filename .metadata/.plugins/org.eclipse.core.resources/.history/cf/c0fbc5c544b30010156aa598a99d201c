@@ -1,0 +1,5 @@
+package com.hex.ecomcs.config;
+
+public class GlobalExceptionHandler {
+
+}

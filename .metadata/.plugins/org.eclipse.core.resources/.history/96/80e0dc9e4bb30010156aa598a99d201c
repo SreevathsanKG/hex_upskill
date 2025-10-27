@@ -1,0 +1,5 @@
+package com.hex.ecomcs.mapper;
+
+public class ProductMapper {
+
+}

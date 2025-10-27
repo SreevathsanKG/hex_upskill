@@ -13,5 +13,7 @@ public class VendorService {
 
 	private final VendorRepository vendorRepository;
 	
-	public Vendor getById
+	public Vendor getById(Long customerId) {
+		return vendorRepository.findById(customerId).orElseThrow(()-> new RuntimeException("Customer ID Invalid"));
+	}
 }
