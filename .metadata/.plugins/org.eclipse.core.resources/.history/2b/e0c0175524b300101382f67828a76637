@@ -1,0 +1,22 @@
+package com.hex.trs.service;
+
+import org.springframework.stereotype.Service;
+
+import com.hex.trs.dto.TicketReqDto;
+import com.hex.trs.dto.TicketRespDto;
+import com.hex.trs.mapper.TicketMapper;
+
+import jakarta.validation.Valid;
+
+@Service
+public class TicketService {
+	
+	private final CustomerService customerService;
+	private final TicketMapper ticketMapper;
+
+	public TicketRespDto add(Long customerId, @Valid TicketReqDto ticketReqDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

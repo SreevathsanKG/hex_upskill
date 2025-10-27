@@ -1,0 +1,5 @@
+package com.hex.trs.dto;
+
+public record TicketRespDto() {
+
+}

@@ -1,0 +1,10 @@
+package com.hex.trs.mapper;
+
+import org.springframework.stereotype.Component;
+
+import com.hex.trs.model.Ticket;
+
+@Component
+public class TicketMapper {
+
+}

@@ -1,0 +1,18 @@
+package com.hex.trs.mapper;
+
+import org.springframework.stereotype.Component;
+
+import com.hex.trs.dto.TicketReqDto;
+import com.hex.trs.model.Ticket;
+
+import jakarta.validation.Valid;
+
+@Component
+public class TicketMapper {
+	
+	public Ticket toEntity(@Valid TicketReqDto ticketReqDto) {
+		Ticket ticket = new Ticket();
+		return null;
+	}
+
+}
