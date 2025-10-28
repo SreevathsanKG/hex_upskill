@@ -1,0 +1,53 @@
+package com.hex.trs.model;
+
+import java.time.Instant;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.hex.trs.enums.Priority;
+import com.hex.trs.enums.Status;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+@Entity
+@Getter
+@Setter
+@Table(name = "tickets")
+public class Ticket {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private long id;
+	
+	@Column(name = "sub")
+	private String subject;
+	
+	@Column(length = 1000)
+	private String issues;
+	
+	@Enumerated(EnumType.STRING)
+	private Priority priority;
+	
+	@Enumerated(EnumType.ORDINAL)
+	private Status status;
+	
+	@CreationTimestamp
+	private Instant createdAt;
+	
+	@UpdateTimestamp
+	private Instant updatedAt;
+	
+	@ManyToOne
+	private Customer customer;
+}

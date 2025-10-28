@@ -1,15 +1,20 @@
 package com.hex.trs.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hex.trs.dto.TicketPlanDto;
 import com.hex.trs.dto.TicketReqDto;
+import com.hex.trs.model.Ticket;
 import com.hex.trs.service.TicketService;
 
 import jakarta.validation.Valid;
@@ -26,5 +31,17 @@ public class TicketController {
 	public ResponseEntity<?> addTicket(@PathVariable Long customerId, @Valid @RequestBody TicketReqDto ticketReqDto) { 
 		return ResponseEntity.created(URI.create("/api/ticket/add"))
 				.body(ticketService.add(customerId, ticketReqDto));
+	}
+	
+	@GetMapping("/customer/{customerId}")
+	public List<Ticket> getTicketsByCustomer(@PathVariable Long customerId) {
+		return ticketService.getTicketsByCustomer(customerId);
+	}
+	
+	@GetMapping("/plan/info")
+	public List<TicketPlanDto> getTicketDetailsWithPlanInfo(
+			@RequestParam(required = false, defaultValue = "0") String page,
+			@RequestParam(required = false, defaultValue = "10") String size) {
+		return ticketService.getTicketDetailsWithPlanInfo(page, size);
 	}
 }

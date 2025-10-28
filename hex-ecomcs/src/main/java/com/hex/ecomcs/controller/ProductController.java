@@ -1,14 +1,18 @@
 package com.hex.ecomcs.controller;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.hex.ecomcs.dto.ProductInfoDto;
 import com.hex.ecomcs.dto.ProductReqDto;
 import com.hex.ecomcs.service.ProductService;
 
@@ -25,5 +29,12 @@ public class ProductController {
 	@PostMapping("/add/{categoryId}/{vendorId}")
 	public ResponseEntity<?> addProduct(@PathVariable Long categoryId, @PathVariable Long vendorId,@Valid @RequestBody ProductReqDto productReqDto) {
 		return ResponseEntity.created(URI.create("/api/product/add")).body(productService.addProduct(categoryId, vendorId, productReqDto));
+	}
+	
+	@GetMapping("/info")
+	public List<ProductInfoDto> getProductWithCategoryVendorInfo(
+			@RequestParam(required = false, defaultValue = "0") String page,
+			@RequestParam(required = false, defaultValue = "10") String size) {
+		return productService.getProductWithCategoryVendorInfo(page, size);
 	}
 }

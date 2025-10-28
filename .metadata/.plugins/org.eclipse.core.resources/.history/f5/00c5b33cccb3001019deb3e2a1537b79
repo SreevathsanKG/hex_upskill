@@ -1,0 +1,30 @@
+package com.hex.trs.controller;
+
+import java.net.URI;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.hex.trs.dto.TicketReqDto;
+import com.hex.trs.service.TicketService;
+
+import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
+
+@RestController
+@AllArgsConstructor
+@RequestMapping("/api/ticket")
+public class TicketController {
+	
+	private final TicketService ticketService;
+
+	@PostMapping("/add/v1/{customerId}")
+	public ResponseEntity<?> addTicket(@PathVariable Long customerId, @Valid @RequestBody TicketReqDto ticketReqDto) { 
+		return ResponseEntity.created(URI.create("/api/ticket/add"))
+				.body(ticketService.add(customerId, ticketReqDto));
+	}
+}

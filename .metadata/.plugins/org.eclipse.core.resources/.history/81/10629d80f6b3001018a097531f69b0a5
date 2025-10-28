@@ -1,0 +1,18 @@
+package com.hex.ecomcs.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.hex.ecomcs.dto.CustomerInfoDto;
+
+import lombok.AllArgsConstructor;
+
+@Service
+@AllArgsConstructor
+public class CustomerService {public List<CustomerInfoDto> getCustomerWithProductBoughtCount() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

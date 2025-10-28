@@ -1,7 +1,12 @@
 package com.hex.ecomcs.service;
 
+import java.util.List;
+
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.hex.ecomcs.dto.ProductInfoDto;
 import com.hex.ecomcs.dto.ProductReqDto;
 import com.hex.ecomcs.mapper.ProductMapper;
 import com.hex.ecomcs.model.Category;
@@ -28,5 +33,10 @@ public class ProductService {
 		product.setCategory(category);
 		product.setVendor(vendor);
 		return productRepository.save(product);
+	}
+
+	public List<ProductInfoDto> getProductWithCategoryVendorInfo(String page,String size) {
+		Pageable pageable = PageRequest.of(Integer.parseInt(page), Integer.parseInt(size));
+		return productRepository.getProductWithCategoryVendorInfo(pageable);
 	}
 }

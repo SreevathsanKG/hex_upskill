@@ -1,0 +1,5 @@
+package com.hex.trs.controller;
+
+public class CustomerController {
+
+}
