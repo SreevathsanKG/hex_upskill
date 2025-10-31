@@ -3,6 +3,7 @@ package com.hex.fsc.mapper;
 import org.springframework.stereotype.Component;
 
 import com.hex.fsc.dto.PolicyReqDto;
+import com.hex.fsc.enums.PolicyType;
 import com.hex.fsc.model.Policy;
 
 import jakarta.validation.Valid;
@@ -14,7 +15,7 @@ public class PolicyMapper {
 		Policy policy = new Policy();
 		policy.setTitle(policyReqDto.title());
 		policy.setTenure(policyReqDto.tenure());
-		policy.setType(policyReqDto.type());
+		policy.setType(PolicyType.valueOf(policyReqDto.type()));
 		return policy;
 	}
 }
