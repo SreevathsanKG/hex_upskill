@@ -3,6 +3,7 @@ package com.hex.fsc.service;
 import org.springframework.stereotype.Service;
 
 import com.hex.fsc.dto.PolicyReqDto;
+import com.hex.fsc.exception.InvalidIdException;
 import com.hex.fsc.mapper.PolicyMapper;
 import com.hex.fsc.model.Customer;
 import com.hex.fsc.model.Policy;
@@ -25,6 +26,10 @@ public class PolicyService {
 		Policy policy = policyMapper.toEntity(policyReqDto);
 		policy.setCustomer(customer);
 		return policyRepository.save(policy);
+	}
+
+	public Policy getByPolicyId(Long policyId) throws InvalidIdException {
+		return policyRepository.findById(policyId).orElseThrow(() -> new InvalidIdException("Policy ID Invalid"));
 	}
 
 }

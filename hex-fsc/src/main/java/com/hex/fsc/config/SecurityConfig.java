@@ -32,6 +32,7 @@ public class SecurityConfig {
                        .requestMatchers(HttpMethod.POST, "/api/customer/signup").permitAll()
                        .requestMatchers(HttpMethod.POST, "/api/company/signup").permitAll()
                        .requestMatchers(HttpMethod.POST, "/api/policy/customer/add").hasAnyAuthority("CUSTOMER")
+                       .requestMatchers(HttpMethod.POST, "/api/policycompany/add").hasAnyAuthority("COMPANY")
                        .anyRequest().authenticated()
                )
                .httpBasic(Customizer.withDefaults());
