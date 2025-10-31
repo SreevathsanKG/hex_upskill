@@ -11,6 +11,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import com.hex.trs.exception.InvalidIdException;
+
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -33,5 +35,10 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(RuntimeException.class) 
 		public ResponseEntity<?> handleRuntimeException(RuntimeException e){
 			return ResponseEntity.badRequest().body(e.getMessage());
+	}
+	
+	@ExceptionHandler(InvalidIdException.class) 
+	public ResponseEntity<?> handleInvalidIdException(InvalidIdException e){
+		return ResponseEntity.badRequest().body(e.getMessage());
 	}
 }

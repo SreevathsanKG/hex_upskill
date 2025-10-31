@@ -28,5 +28,6 @@ public interface TicketRepository extends JpaRepository<Ticket, Long>{
 			JOIN Plan p on cp.plan=p
 			""")
 	List<TicketPlanDto> getTicketDetailsWithPlanInfo(Pageable pageable);
+	
 
 }

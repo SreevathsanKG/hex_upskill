@@ -44,4 +44,5 @@ public class TicketController {
 			@RequestParam(required = false, defaultValue = "10") String size) {
 		return ticketService.getTicketDetailsWithPlanInfo(page, size);
 	}
+	
 }
